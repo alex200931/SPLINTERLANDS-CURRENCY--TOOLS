@@ -1,5 +1,6 @@
 import requests
 
+spacer = "*" * 75
 
 def convertDEC():
     api= 'https://api.coingecko.com/api/v3/simple/price?ids=dark-energy-crystals&vs_currencies=usd&include_24hr_change=true&include_last_updated_at=true'
@@ -11,7 +12,10 @@ def convertDEC():
     change = data['usd_24h_change']
     last_update= data['last_updated_at']
     numberInDollars = (decAmount) * (decPrice)
-    print("is equivalent to $", numberInDollars, "\n","percent changed:", change)
+    print(spacer)
+    print(decAmount,"is equivalent to $", int(numberInDollars), "\n","percent changed:", change)
+    print(spacer)
+    
    
 def convertSPS():
     api = "https://api.coingecko.com/api/v3/simple/price?ids=splinterlands&vs_currencies=usd"
@@ -21,7 +25,9 @@ def convertSPS():
     data = response['splinterlands']
     spsPrice = data['usd']
     numberInDollars = float(spsAmount) * float(spsPrice)
-    print(spsAmount, "is equivalent to $", int(numberInDollars))
+    print(spacer)
+    print(spsAmount,"is equivalent to $", int(numberInDollars))
+    print(spacer)
 
 
 def menu():
@@ -37,9 +43,11 @@ def menu():
     """)
 
     if selection.lower() == "a":
-        convertDEC(), menu()
+        convertDEC()
+        menu()
     elif selection.lower() == "b":
-        convertSPS(), menu()
+        convertSPS()
+        menu()
     elif selection.lower() == "x":
         exit()
     else:
