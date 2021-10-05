@@ -1,8 +1,4 @@
 import requests
-from colorama import Fore 
-
-RED = Fore.RED
-RESET = Fore.RESET
 
 
 def convertDEC():
@@ -47,7 +43,7 @@ def menu():
     elif selection.lower() == "x":
         exit()
     else:
-        print(f"{RED}Invalid choice{RESET}")
+        print("Invalid choice")
         menu()
 
 
