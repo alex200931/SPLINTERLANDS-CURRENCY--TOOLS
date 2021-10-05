@@ -18,15 +18,16 @@ def convertDEC():
     
    
 def convertSPS():
-    api = "https://api.coingecko.com/api/v3/simple/price?ids=splinterlands&vs_currencies=usd"
+    api = "https://api.coingecko.com/api/v3/simple/price?ids=splinterlands&vs_currencies=usd&include_24hr_change=true"
     spsAmount = float(input("SPS AMount?"))
     response = requests.get(api)
     response = response.json()
     data = response['splinterlands']
     spsPrice = data['usd']
+    change= data['usd_24h_change']
     numberInDollars = float(spsAmount) * float(spsPrice)
     print(spacer)
-    print(spsAmount,"is equivalent to $", int(numberInDollars))
+    print(spsAmount,"is equivalent to $", int(numberInDollars),"\n","percent changed:", change)
     print(spacer)
 
 
