@@ -15,7 +15,7 @@ def convertDEC():
     change = data['usd_24h_change']
     last_update= data['last_updated_at']
     numberInDollars = (decAmount) * (decPrice)
-    print("is approximately:", numberInDollars, "\n","percent changed:", change)
+    print("is equivalent to $", numberInDollars, "\n","percent changed:", change)
    
 def convertSPS():
     api = "https://api.coingecko.com/api/v3/simple/price?ids=splinterlands&vs_currencies=usd"
