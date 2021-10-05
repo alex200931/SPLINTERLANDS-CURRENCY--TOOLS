@@ -35,7 +35,7 @@ def menu():
     B: SPS
     X: EXIT
 
-    (CREDIT: whonixx)
+    (CREDIT: whonixx 4 helping code "shiet" and "learninshiet")
     
     Select which currency you would like to convert to USD: )
     """)
