@@ -13,7 +13,7 @@ def convertDEC():
     last_update= data['last_updated_at']
     numberInDollars = (decAmount) * (decPrice)
     print(spacer)
-    print(decAmount,"is equivalent to $", int(numberInDollars), "\n","percent changed:", change)
+    print(decAmount,"is equivalent to $", numberInDollars, "\n","percent changed:", change)
     print(spacer)
     
    
@@ -27,7 +27,7 @@ def convertSPS():
     change= data['usd_24h_change']
     numberInDollars = float(spsAmount) * float(spsPrice)
     print(spacer)
-    print(spsAmount,"is equivalent to $", int(numberInDollars),"\n","percent changed:", change)
+    print(spsAmount,"is equivalent to $", numberInDollars,"\n","percent changed:", change)
     print(spacer)
 
 
