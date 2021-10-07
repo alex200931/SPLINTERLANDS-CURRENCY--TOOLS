@@ -1,6 +1,7 @@
 import requests
 
 spacer = "*" * 75
+spacer_B= "-" * 75
 
 def convertDEC():
     api= 'https://api.coingecko.com/api/v3/simple/price?ids=dark-energy-crystals&vs_currencies=usd&include_24hr_change=true&include_last_updated_at=true'
@@ -37,17 +38,24 @@ def menu():
     A: DEC
     B: SPS
     X: EXIT
-
-    (CREDIT: whonixx 4 helping code "shiet" and "learninshiet")
     
     Select which currency you would like to convert to USD: )
+    
+
     """)
 
     if selection.lower() == "a":
         convertDEC()
+        print(spacer_B)
+        print("CREDIT: whonixx 4 helping code shiet and learninshiet")
+        print(spacer_B)
         menu()
     elif selection.lower() == "b":
         convertSPS()
+      
+        print(spacer_B)
+        print("CREDIT: whonixx 4 helping code shiet and learninshiet")
+        print(spacer_B)
         menu()
     elif selection.lower() == "x":
         exit()
