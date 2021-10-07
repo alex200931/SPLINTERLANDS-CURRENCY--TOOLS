@@ -31,6 +31,9 @@ def convertSPS():
     print(spsAmount,"is equivalent to $", numberInDollars,"\n","percent changed:", change)
     print(spacer)
 
+def credit():
+    credit=  print("CREDIT: whonixx 4 helping code shiet and learninshiet")
+
 
 def menu():
     selection = input("""
@@ -46,15 +49,16 @@ def menu():
 
     if selection.lower() == "a":
         convertDEC()
-        print(spacer_B)
-        print("CREDIT: whonixx 4 helping code shiet and learninshiet")
-        print(spacer_B)
         menu()
+        print(spacer_B)
+        credit()
+        print(spacer_B)
+        
     elif selection.lower() == "b":
         convertSPS()
       
         print(spacer_B)
-        print("CREDIT: whonixx 4 helping code shiet and learninshiet")
+        credit()
         print(spacer_B)
         menu()
     elif selection.lower() == "x":
