@@ -63,6 +63,8 @@ data= response["wax"]
 waxPrice= data["usd"]
 
 
+
+
 def menu():
     selection = input("""
     Splinterlands Price Converter\n
@@ -93,6 +95,7 @@ def menu():
         print(spacer_B)
         landPrice()
         print(spacer_B)
+        menu()
 
     elif selection.lower() == "x":
         exit()
