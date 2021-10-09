@@ -31,8 +31,36 @@ def convertSPS():
     print(spsAmount,"is equivalent to $", numberInDollars,"\n","percent changed:", change)
     print(spacer)
 
-def credit():
-    credit=  print("CREDIT: whonixx 4 helping code shiet and learninshiet")
+def landPrice():
+    api = "https://wax.api.atomicassets.io/atomicmarket/v1/sales?state=1&collection_name=splintrlands&template_id=57491&page=1&limit=1&order=asc&sort=price"
+    response = requests.get(api)
+    response = response.json()
+    data= response["data"]
+
+    landLowPriceDic = {}
+    for k, v in [(key, d[key]) for d in data for key in d]:
+        if k not in landLowPriceDic:
+            landLowPriceDic[k] = [v]
+        else:
+            landLowPriceDic.append(v)
+
+    
+    
+    
+    data= landLowPriceDic
+    lowPrice= data["listing_price"]
+    lowPrice = str(lowPrice)[2:-10]
+    landPrice= float(waxPrice) * float(lowPrice)
+    print (spacer)
+    print("Lowest Avalible Land Price: $", float(landPrice))
+    print(spacer)
+
+
+waxApi= "https://api.coingecko.com/api/v3/simple/price?ids=wax&vs_currencies=usd"
+response = requests.get(waxApi)
+response = response.json()
+data= response["wax"]
+waxPrice= data["usd"]
 
 
 def menu():
@@ -40,6 +68,7 @@ def menu():
     Splinterlands Price Converter\n
     A: DEC
     B: SPS
+    C: LAND
     X: EXIT
     
     Select which currency you would like to convert to USD: )
@@ -49,22 +78,28 @@ def menu():
 
     if selection.lower() == "a":
         convertDEC()
+        print(spacer_B)
+        print("CREDIT: whonixx 4 helping code shiet and learninshiet")
+        print(spacer_B)
         menu()
-        print(spacer_B)
-        credit()
-        print(spacer_B)
-        
     elif selection.lower() == "b":
         convertSPS()
       
         print(spacer_B)
-        credit()
+        print("CREDIT: whonixx 4 helping code shiet and learninshiet")
         print(spacer_B)
         menu()
+    elif selection.lower() == "c":
+        print(spacer_B)
+        landPrice()
+        print(spacer_B)
+
     elif selection.lower() == "x":
         exit()
     else:
-        print("Invalid choice")
+        print(spacer_B)
+        print("Invalid choice \n returning back to menue")
+        print(spacer_B)
         menu()
 
 
