@@ -38,32 +38,37 @@ def landPrice():
     data= response["data"]
 
     landLowPriceDic = {}
+
     for k, v in [(key, d[key]) for d in data for key in d]:
         if k not in landLowPriceDic:
             landLowPriceDic[k] = [v]
         else:
             landLowPriceDic.append(v)
 
+    data = landLowPriceDic['price']
+
+    landLowPriceDic = {}    
     
-    
-    
-    data= landLowPriceDic
-    lowPrice= data["listing_price"]
-    lowPrice = str(lowPrice)[2:-10]
-    landPrice= float(waxPrice) * float(lowPrice)
-    print (spacer)
+    for k, v in [(key, d[key]) for d in data for key in d]:
+        if k not in landLowPriceDic:
+            landLowPriceDic[k] = [v]
+        else:
+            landLowPriceDic.append(v)
+
+    amount = landLowPriceDic['amount']
+    amount = str(amount)[2:-10]
+
+    waxApi= "https://api.coingecko.com/api/v3/simple/price?ids=wax&vs_currencies=usd"
+    response = requests.get(waxApi)
+    response = response.json()
+    data = response["wax"]
+    waxPrice = data["usd"]
+    landPrice = float(amount) * float(waxPrice)
+
+    print(spacer)
     print("Lowest Avalible Land Price: $", float(landPrice))
     print(spacer)
-
-
-waxApi= "https://api.coingecko.com/api/v3/simple/price?ids=wax&vs_currencies=usd"
-response = requests.get(waxApi)
-response = response.json()
-data= response["wax"]
-waxPrice= data["usd"]
-
-
-
+ 
 
 def menu():
     selection = input("""
@@ -75,7 +80,6 @@ def menu():
     
     Select which currency you would like to convert to USD: )
     
-
     """)
 
     if selection.lower() == "a":
@@ -86,7 +90,6 @@ def menu():
         menu()
     elif selection.lower() == "b":
         convertSPS()
-      
         print(spacer_B)
         print("CREDIT: whonixx 4 helping code shiet and learninshiet")
         print(spacer_B)
@@ -101,9 +104,11 @@ def menu():
         exit()
     else:
         print(spacer_B)
-        print("Invalid choice \n returning back to menue")
+        print("Invalid choice \n returning back to menu")
         print(spacer_B)
         menu()
 
 
 menu()
+
+
